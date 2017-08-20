@@ -5,6 +5,17 @@ Non, c'est pas vrai, je fais pas du php
 - [CLI builtin server](http://php.net/manual/en/features.commandline.webserver.php)
 - [PHP PDO ??](http://php.net/manual/en/book.pdo.php)
 
+## Setup
+- Setup db
+```bash
+$> make setup
+```
+
+- Drop db
+```bash
+$> make drop
+```
+
 ## Routes
 #### GET
 - `/`
