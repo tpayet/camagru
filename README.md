@@ -4,6 +4,7 @@ Non, c'est pas vrai, je fais pas du php
 ## Documentation
 - [CLI builtin server](http://php.net/manual/en/features.commandline.webserver.php)
 - [PHP PDO ??](http://php.net/manual/en/book.pdo.php)
+- [Canvas handling webcam stream JS](https://developer.mozilla.org/fr/docs/Web/API/HTMLCanvasElement/getContext) && [Github example](https://github.com/codepo8/interaction-cam)
 
 ## Routes
 #### GET
