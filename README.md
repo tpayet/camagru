@@ -6,6 +6,17 @@ Non, c'est pas vrai, je fais pas du php
 - [PHP PDO ??](http://php.net/manual/en/book.pdo.php)
 - [Canvas handling webcam stream JS](https://developer.mozilla.org/fr/docs/Web/API/HTMLCanvasElement/getContext) && [Github example](https://github.com/codepo8/interaction-cam)
 
+## Setup
+- Setup db
+```bash
+$> make setup
+```
+
+- Drop db
+```bash
+$> make drop
+```
+
 ## Routes
 #### GET
 - `/`
