@@ -1,7 +1,7 @@
 <?php
-  $dbh = require "database.php";
+$dbh = require "database.php";
   
-  try {
+try {
     $dbh->beginTransaction();
 
     // users table
@@ -38,8 +38,8 @@
                       data TEXT);";
 
     $dbh->exec($sql_request);
-    $dbh->commit();  
-  } catch (PDOException $e) {
+    $dbh->commit();
+} catch (PDOException $e) {
     print $e;
-  }
+}
 ?>
