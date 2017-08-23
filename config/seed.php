@@ -1,15 +1,10 @@
 <?php
+
+require __DIR__."/../models/user.php";
 $dbh = require "database.php";
 
-try {
-    $dbh->beginTransaction();
-
-    $sql_request = "INSERT INTO users (username, email, password, confirmed)
-                    VALUES ('totolapaille', 'totolapaille@gmail.com', 'toto', 1);";
-
-    $dbh->exec($sql_request);
-    $dbh->commit();
-} catch (PDOException $e) {
-    print $e;
-}
+User::create($dbh, array(
+                         "username" => "totolapaille",
+                         "email" => "totolapaille@gmail.com",
+                         "password" => "toto"));
 ?>
