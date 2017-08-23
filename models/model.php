@@ -58,12 +58,12 @@ abstract class Model
         return $instance;
     }
 
-    public static function find(PDO $dbh, int $id) {
+    public static function find(PDO $dbh, string $column, $value) {
         $class_name = self::get_classname();
         $instance = new $class_name();
 
         $table_name = self::get_tablename();
-        $sql_query = "SELECT * FROM $table_name WHERE $table_name.id = $id LIMIT 1;";
+        $sql_query = "SELECT * FROM $table_name WHERE $table_name.$column = '$value' LIMIT 1;";
         $query = $dbh->query($sql_query);
         $model = $query->fetch();
         $instance->fill($model);
