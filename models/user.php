@@ -14,6 +14,10 @@ class User extends Model
 
     public static function login(PDO $dbh, string $username, string $password):bool {
         $user = User::find($dbh, "username", $username);
+        print("$username\n");
+        print($password);
+        print("pwdhash:".hash("sha512", "toto$password")."\n");
+        print("get_pwd:".$user->get_pwd());
         return ($user->get_pwd() === hash("sha512", "toto$password"));
     }
 }

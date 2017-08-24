@@ -20,7 +20,11 @@ abstract class Model
     public function fill($params) {
         foreach ($params as $key => $value) {
             if (!is_numeric($key)) {
-                $this->$key = $value;
+                if ($key === "password") {
+                    $this->set_pwd($value);
+                } else {
+                    $this->$key = $value;
+                }
             }
         }
     }
