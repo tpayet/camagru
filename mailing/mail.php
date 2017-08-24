@@ -5,9 +5,7 @@ abstract class Mail
 {
     private $headers = "From: camagru@camagru.com \r\nReply-To: camagru@camagru.com \r\n";
 
-    private $message = "Hello world\n";
-
-    function __construct($to) {
+    function __construct(string $to) {
         $this->to = $to;
     }
 
