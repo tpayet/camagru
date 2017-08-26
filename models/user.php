@@ -5,7 +5,7 @@ require __DIR__."/model.php";
 class User extends Model
 {
     public function set_pwd($password) {
-        $this->password = hash("sha512", "toto$password");
+        $this->password = self::hash_pwd($password);
     }
 
     private function get_pwd():string {
@@ -15,6 +15,16 @@ class User extends Model
     public static function login(PDO $dbh, string $username, string $password):bool {
         $user = User::find($dbh, "username", $username);
         return ($user->get_pwd() === hash("sha512", "toto$password"));
+    }
+
+    private static function hash_pwd($password):string {
+        return hash("sha512", "toto$password");
+    }
+
+    public static function create(PDO $dbh, array $params): Model{
+        array_key_exists("password", $params);
+        $params["password"] = self::hash_pwd($params["password"]);
+        return parent::create($dbh, $params);
     }
 }
 ?>
