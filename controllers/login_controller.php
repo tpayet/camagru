@@ -11,13 +11,13 @@ class LoginController extends Controller
         if (User::login($dbh, $params['username'], $params['password'])) {
             $_SESSION['login'] = $params["username"];
         }
-        echo View::render(__DIR__."/../templates/index.php");
+        echo View::render(__DIR__."/../views/index.php");
     }
 
     public static function logout(PDO $DBH, array $params) {
         session_destroy();
         session_start();
-        echo View::render(__DIR__."/../templates/index.php");
+        echo View::render(__DIR__."/../views/index.php");
     }
 }
 ?>

@@ -4,7 +4,7 @@
     <title>Camagru</title>
 </head>
 <body>
-<?php include __DIR__."/header.php" ?>
+<?php include __DIR__."/../templates/header.php" ?>
 <?php if (array_key_exists("login", $_SESSION)) { ?>
     <div><p><?=print_r($_SESSION)?></p></div>
 <?php } else { ?>

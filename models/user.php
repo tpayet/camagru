@@ -26,5 +26,18 @@ class User extends Model
         $params["password"] = self::hash_pwd($params["password"]);
         return parent::create($dbh, $params);
     }
+
+    public static function exists(PDO $dbh, array $params):bool {
+        if (array_key_exists("username", $params)) {
+            if (self::find($dbh, "username", $params["username"])) {
+                return true;
+            }
+        } elseif (array_key_exists("email", $params)) {
+            if (self::find($dbh, "email", $params["email"])) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 ?>
