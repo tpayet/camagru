@@ -1,11 +1,7 @@
 <?php
-
-require_once __DIR__."/../templates/template.php";
+declare(strict_types=1);
 
 abstract class Controller
 {
-    public static function render_template($content){
-        print template("Camagrou", $this->content());
-    }
 }
 ?>
