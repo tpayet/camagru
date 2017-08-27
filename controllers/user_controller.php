@@ -29,5 +29,23 @@ class UserController extends Controller
             echo View::render(__DIR__."/../views/index.php");
         }        
     }
+
+    public static function confirm_account(PDO $dbh, array $params) {
+        if (array_key_exists("username", $params)) {
+            $user = User::find($dbh, "username", $params["username"]);
+            if (!is_null($user)) {
+                $user->set_confirmed(true
+
+                    );
+                $user->save($dbh);
+                $_SESSION["message"] = "your account is confirmed, you can now login";
+            } else {
+                $_SESSION["message"] = "username not found. please contact someone";
+            }
+            echo View::render(__DIR__."/../views/index.php");
+        } else {
+            header("Location: /");
+        }
+    }
 }
 ?>

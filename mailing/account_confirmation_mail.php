@@ -15,8 +15,8 @@ class AccountConfirmationMail extends Mail
     public function send() {
         $this->headers .= 'MIME-Version: 1.0' . "\r\n";
         $this->headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $this->message = "<html>Welcome on Camagru,\nPlease confirm your registration.";
-        $this->message .= "\n <form action='localhost:8080/confirm_account?username=" . $this->username . "><input type='submit' name='confirm'></form></html>";
+        $this->message = "<html><body>Welcome on Camagru,<br/>Please confirm your registration: <br/><a href='http://localhost:8080/confirm_account?username=$this->username'>http://localhost:8080/confirm_account?username=$this->username</a>";
+        $this->message .= "\n <form action='localhost:8080/confirm_account?username=" . $this->username . "><input type='submit' name='confirm'></form></body></html>";
         parent::send();
     }
 }

@@ -22,6 +22,8 @@ if (preg_match('/(\/login)/', $_SERVER["REQUEST_URI"])) {
     UserController::render_sign_up($dbh, $_POST);
 } elseif (preg_match('/(\/register)/', $_SERVER["REQUEST_URI"])) {
     UserController::register($dbh, $_POST);
+} elseif (preg_match('/(\/confirm_account)/', $_SERVER["REQUEST_URI"])) {
+    UserController::confirm_account($dbh, $_GET);
 } else {
     echo View::render(__DIR__."/views/index.php");
 }

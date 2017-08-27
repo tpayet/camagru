@@ -26,7 +26,7 @@ abstract class Model
     }
 
     public function save(PDO $dbh) {
-        $object_vars = get_object_vars($this);
+        $object_vars = array_filter(get_object_vars($this));
         $table_name = self::get_tablename();
 
         $array_keys = implode(", ", array_keys($object_vars));
