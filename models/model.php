@@ -26,7 +26,7 @@ abstract class Model
     }
 
     public function save(PDO $dbh) {
-        $object_vars = array_filter(get_object_vars($this));;
+        $object_vars = array_filter(get_object_vars($this));
         $table_name = self::get_tablename();
 
         $array_keys = implode(", ", array_keys($object_vars));
@@ -66,8 +66,12 @@ abstract class Model
         $sql_query = "SELECT * FROM $table_name WHERE $table_name.$column = '$value' LIMIT 1;";
         $query = $dbh->query($sql_query);
         $model = $query->fetch();
-        $instance->fill($model);
-        return $instance;
+        if (empty($model)) {
+            return null;
+        } else {
+            $instance->fill($model);
+            return $instance;
+        }
     }
 }
 ?>
