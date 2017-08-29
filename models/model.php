@@ -25,6 +25,10 @@ abstract class Model
         }
     }
 
+    public function get_id() {
+        return $this->id;
+    }
+
     public function save(PDO $dbh) {
         $object_vars = array_filter(get_object_vars($this));
         $table_name = self::get_tablename();
