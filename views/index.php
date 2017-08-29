@@ -6,7 +6,13 @@
 <body>
 <?php include __DIR__."/../templates/header.php" ?>
 <?php if (array_key_exists("login", $_SESSION)) { ?>
-    <div><p><?=print_r($_SESSION)?></p></div>
+    <div>
+        <form enctype="multipart/form-data" method="POST" action="/upload">
+            <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+            <input type="file" name="userfile">
+            <input type="submit" value="upload file" />
+        </form>
+    </div>
 <?php } else { ?>
     <div>
         <form action="/login" method="post">
