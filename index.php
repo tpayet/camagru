@@ -4,6 +4,8 @@ declare(strict_types=1);
 require_once __DIR__."/controllers/login_controller.php";
 require_once __DIR__."/controllers/galery_controller.php";
 require_once __DIR__."/controllers/user_controller.php";
+require_once __DIR__."/controllers/picture_controller.php";
+
 require_once __DIR__."/views/view.php";
 $dbh = require_once __DIR__."/config/database.php";
 
@@ -24,6 +26,8 @@ if (preg_match('/(\/login)/', $_SERVER["REQUEST_URI"])) {
     UserController::register($dbh, $_POST);
 } elseif (preg_match('/(\/confirm_account)/', $_SERVER["REQUEST_URI"])) {
     UserController::confirm_account($dbh, $_GET);
+} elseif (preg_match('/(\/upload)/', $_SERVER["REQUEST_URI"])) {
+    PictureController::upload($dbh, $_POST);
 } else {
     echo View::render(__DIR__."/views/index.php");
 }
