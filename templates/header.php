@@ -4,7 +4,7 @@
     </div>
 <?php } ?>
 <header style="background-color: red;">
-    <form action="/galery" method="post">
+    <form action="/galery" method="get">
         <input type="submit" name="galery" value="galery">
     </form>
     <?php if(array_key_exists("login", $_SESSION)) {?>

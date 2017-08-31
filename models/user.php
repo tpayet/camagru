@@ -20,6 +20,10 @@ class User extends Model
         return $this->confirmed;
     }
 
+    public function get_username() {
+        return $this->username;
+    }
+
     public static function login(PDO $dbh, string $username, string $password):bool {
         $user = User::find($dbh, "username", $username);
         if ($user->get_confirmed()) {
