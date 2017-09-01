@@ -12,6 +12,8 @@ class LoginController extends Controller
             $_SESSION["message"] = "an email to reset your password has been sent";
         } elseif (User::login($dbh, $params['username'], $params['password'])) {
             $_SESSION['login'] = $params["username"];
+        } else {
+            $_SESSION["message"] = "login failed, either wrong credentials or account not confirmed";
         }
         echo View::render(__DIR__."/../views/index.php");
     }
