@@ -7,7 +7,9 @@ require_once __DIR__."/../views/view.php";
 class GaleryController extends Controller
 {
     public static function show(PDO $dbh, array $params) {
-        echo View::render(__DIR__."/../templates/galery.php");
+        $pictures = Picture::all($dbh);
+        echo View::render(__DIR__."/../views/galery.php", array("pictures_paths" => $pictures,
+                                                                "dbh" => $dbh));
     }
 }
 ?>

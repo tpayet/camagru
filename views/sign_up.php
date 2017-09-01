@@ -13,5 +13,6 @@
             <input type="submit" name="register">
         </form>
     </div>
+    <?php  include __DIR__."/../templates/footer.php" ?>
 </body>
 </html>

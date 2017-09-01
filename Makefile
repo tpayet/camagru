@@ -13,4 +13,4 @@ seed:
 drop:
 	@echo "db drop"
 	@rm $(DB_NAME)
-
+	@rm -rf uploads/*.*
