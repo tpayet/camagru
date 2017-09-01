@@ -25,7 +25,6 @@ function fill_models($array, $class_name):array {
 abstract class Model
 {
     function __construct() {
-        $this->table_name = self::get_tablename();
     }
 
     public function fill($params) {
@@ -52,13 +51,15 @@ abstract class Model
         } else {
             $sql_query = "INSERT INTO $table_name($array_keys) VALUES($array_values);";
         }
+
         $dbh->beginTransaction();
         $dbh->exec($sql_query);
         $dbh->commit();
     }
 
     public function delete(PDO $dbh) {
-        $sql_query = "DELETE FROM '$this->table_name' WHERE '$this->table_name'.'id' = '$this->id';";
+        $table_name = self::get_tablename();
+        $sql_query = "DELETE FROM '$table_name' WHERE '$table_name'.'id' = '$this->id';";
         $dbh->beginTransaction();
         $dbh->exec($sql_query);
         $dbh->commit();
