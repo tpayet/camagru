@@ -5,6 +5,8 @@ require_once __DIR__."/controllers/login_controller.php";
 require_once __DIR__."/controllers/galery_controller.php";
 require_once __DIR__."/controllers/user_controller.php";
 require_once __DIR__."/controllers/picture_controller.php";
+require_once __DIR__."/controllers/root_controller.php";
+
 
 require_once __DIR__."/views/view.php";
 $dbh = require_once __DIR__."/config/database.php";
@@ -33,6 +35,6 @@ if (preg_match('/(\/login)/', $_SERVER["REQUEST_URI"])) {
 } elseif (preg_match('/(\/delete_picture)/', $_SERVER["REQUEST_URI"])) {
     PictureController::delete_picture($dbh, $_GET);
 } else {
-    echo View::render(__DIR__."/views/index.php");
+    RootController::index($dbh, $_GET);
 }
 ?>
