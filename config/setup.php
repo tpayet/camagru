@@ -17,7 +17,9 @@ try {
     // pictures table
     $sql_request .= "CREATE TABLE pictures(
                       id INTEGER PRIMARY KEY,
-                      data INTEGER NOT NULL,
+                      file_path TEXT NOT NULL,
+                      name TEXT NOT NULL,
+                      type VARCHAR(255) NOT NULL,
                       user_id INTEGER NOT NULL,
                       FOREIGN KEY(user_id) REFERENCES users(id));";
 

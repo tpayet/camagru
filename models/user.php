@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require __DIR__."/model.php";
+require_once __DIR__."/model.php";
 
 class User extends Model
 {
@@ -18,6 +18,10 @@ class User extends Model
 
     public function get_confirmed() {
         return $this->confirmed;
+    }
+
+    public function get_username() {
+        return $this->username;
     }
 
     public static function login(PDO $dbh, string $username, string $password):bool {
