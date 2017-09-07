@@ -36,6 +36,10 @@ class PictureController extends Controller
         }
     }
 
+    public static function save_webcam(PDO $dbh, array $params) {
+        print_r($params);
+    }
+
     public static function delete_picture(PDO $dbh, array $params) {
         $picture = Picture::find($dbh, "id", $params["img_id"]);
         $picture->delete($dbh);

@@ -15,7 +15,7 @@ class LoginController extends Controller
         } else {
             $_SESSION["message"] = "login failed, either wrong credentials or account not confirmed";
         }
-        echo View::render(__DIR__."/../views/index.php");
+        header("Location: /");
     }
 
     public static function logout(PDO $DBH, array $params) {
