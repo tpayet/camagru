@@ -10,10 +10,11 @@
     <div id="webcam">
         <video id="video"></video>
         <canvas id="canvas" style="display: none"></canvas>
-        <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->
+        <img id="photo" src="http://placekitten.com/g/320/261" alt="photo">
+        <!-- <img id="photo" alt="photo"> -->
         <button id="startbutton">Prendre une photo</button>
-        <form method='post'>
-            <input id="photo" type="hidden" name="data">
+        <form action="/save_webcam" method="post">
+            <input id="photo_input" type="hidden" name="data">
             <input type="submit" value="save picture">
         </form>
     </div>
