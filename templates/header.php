@@ -5,7 +5,7 @@
 <?php 
     unset($_SESSION["message"]);} ?>
 <header style="background-color: red;">
-    <form action="/galery" method="get">
+    <form action="/galery" method="GET">
         <input type="submit" value="galery">
     </form>
     <?php if(array_key_exists("login", $_SESSION)) {?>

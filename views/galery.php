@@ -13,7 +13,7 @@
           <?php $author = $img->author($dbh) ?>
           <p>from: <?= $author->username?></p>
           <?php if ($author->get_username() === $_SESSION["login"]) { ?>
-          <form action="/delete_picture" method="get">
+          <form action="/delete_picture" method="POST">
             <input type="hidden" name="img_id" value=<?= $img->get_id() ?>>
             <input type="submit" name="delete" value="delete">
           </form>
