@@ -36,7 +36,7 @@
             <p>Login: </p>
             <input type="text" name="username" required><br>
             <p>Pwd: </p>
-            <input type="password" name="password" required><br>
+            <input type="password" name="password"><br>
             <input type="submit" name="submit" value="login"><br>
             <input type="submit" name="forgotten_pwd" value="forgotten password">
         </form>
