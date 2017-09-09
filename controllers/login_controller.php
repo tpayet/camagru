@@ -21,7 +21,7 @@ class LoginController extends Controller
     public static function logout(PDO $DBH, array $params) {
         session_destroy();
         session_start();
-        echo View::render(__DIR__."/../views/index.php");
+        header("Location: /sign_up");
     }
 }
 ?>

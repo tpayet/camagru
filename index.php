@@ -15,9 +15,6 @@ $dbh = require_once __DIR__."/config/database.php";
 
 session_start();
 
-if (array_key_exists("message", $_SESSION)) {
-    unset($_SESSION["message"]);
-}
 if (preg_match('/(\/login)/', $_SERVER["REQUEST_URI"])) {
     LoginController::login($dbh, $_POST);
 } elseif (preg_match('/(\/logout)/', $_SERVER["REQUEST_URI"])) {
