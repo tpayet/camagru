@@ -51,24 +51,7 @@
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/png');
-    // console.log(data);
-    
-    // var xhr = new XMLHttpRequest();
-    // var url = "/save_webcam";
-    
-    // xhr.open("POST", url, true);
-    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // params.append("data", data);
 
-    // // xhr.onreadystatechange = function() {//Call a function when the state changes.
-    // //   if(xhr.readyState == 4 && xhr.status == 200) {
-    // //     // console.log(data);
-    // //     // location.reload();
-    // //   }
-    // // }
-    // // console.log(data);
-    // xhr.send(params);
-    // location.reload();
     photo.style.display = "visible";
     photo.setAttribute('src', data);
     photo_input.setAttribute('value', data);

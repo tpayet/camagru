@@ -6,12 +6,10 @@
 <body>
 <?php include __DIR__."/../templates/header.php" ?>
 <?php if (array_key_exists("login", $_SESSION)) { ?>
-    <!-- <div id="webcam" style="display: inline-block"> -->
     <div id="webcam">
         <video id="video"></video>
         <canvas id="canvas" style="display: none"></canvas>
         <img id="photo" src="http://placekitten.com/g/320/261" alt="photo">
-        <!-- <img id="photo" alt="photo"> -->
         <button id="startbutton">Prendre une photo</button>
         <form action="/save_webcam" method="post">
             <input id="photo_input" type="hidden" name="data">

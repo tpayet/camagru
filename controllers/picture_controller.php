@@ -38,20 +38,23 @@ class PictureController extends Controller
 
     public static function save_webcam(PDO $dbh, array $params) {
         if (array_key_exists("data", $params)) {
+            $user              = User::find($dbh, "username", $_SESSION["login"]);
             $data              = $params["data"];
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $data              = base64_decode($data);
-            $file_name         = __DIR__ . "/../uploads/" . hash("md5", "totolapaille") . time () . ".png";
-            file_put_contents($file_name, $data);
+
+            $file_name         = hash("md5", "totolapaille") . time () . ".png";
+            $file_path         = __DIR__ . "/../uploads/" . $file_name;
+            file_put_contents($file_path, $data);
+
+            Picture::create($dbh, array(
+                                        "user_id"   => $user->get_id(),
+                                        "file_path" => $file_path,
+                                        "name"      => $file_name,
+                                        "type"      => $type));
             header("Location: /");
         }
-        // print($params["data"]);
-        // print_r($params);
-        // $base64_img = $params["data"];
-        // $_SESSION["message"];
-        // echo View::render(__DIR__."/../views/index.php");
-        // header("Location: /");
     }
 
     public static function delete_picture(PDO $dbh, array $params) {
