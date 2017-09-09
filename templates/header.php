@@ -2,7 +2,8 @@
     <div>
         <p><?= $_SESSION["message"] ?></p>
     </div>
-<?php } ?>
+<?php 
+    unset($_SESSION["message"]);} ?>
 <header style="background-color: red;">
     <form action="/galery" method="get">
         <input type="submit" value="galery">
