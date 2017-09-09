@@ -34,7 +34,7 @@ if (preg_match('/(\/login)/', $_SERVER["REQUEST_URI"])) {
 } elseif (preg_match('/(\/save_webcam)/', $_SERVER["REQUEST_URI"])) {
     PictureController::save_webcam($dbh, $_POST);
 } elseif (preg_match('/(\/delete_picture)/', $_SERVER["REQUEST_URI"])) {
-    PictureController::delete_picture($dbh, $_GET);
+    PictureController::delete_picture($dbh, $_POST);
 } elseif (preg_match('/(\/serve_js)/', $_SERVER["REQUEST_URI"])) {
     AssetController::serve_javascript($dbh, $_GET);
 } else {

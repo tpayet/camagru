@@ -60,7 +60,7 @@ class PictureController extends Controller
     public static function delete_picture(PDO $dbh, array $params) {
         $picture = Picture::find($dbh, "id", $params["img_id"]);
         $picture->delete($dbh);
-        $uri = $_SERVER['REQUEST_URI'];
+        $uri = $_SERVER['HTTP_REFERER'];
         header("Location: $uri");
     }
 }
