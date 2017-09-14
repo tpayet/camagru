@@ -1,9 +1,8 @@
 <?php
 
-require __DIR__."/model.php";
+require_once __DIR__."/model.php";
 
 class Like extends Model
 {
-    protected $table_name = "likes";
 }
 ?>
