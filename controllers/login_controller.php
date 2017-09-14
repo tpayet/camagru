@@ -4,7 +4,6 @@ declare(strict_types=1);
 require_once __DIR__."/controller.php";
 require_once __DIR__."/../models/user.php";
 require_once __DIR__."/../views/view.php";
-// require_once __DIR__."/../views/reset_pwd.php";
 require_once __DIR__."/../mailing/forgotten_pwd_mail.php";
 
 class LoginController extends Controller
