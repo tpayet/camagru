@@ -2,6 +2,7 @@
 
 require_once __DIR__."/model.php";
 require_once __DIR__."/user.php";
+require_once __DIR__."/like.php";
 
 class Picture extends Model
 {
@@ -12,6 +13,10 @@ class Picture extends Model
 
   public function get_type():string {
     return $this->type;
+  }
+
+  public function get_likes(PDO $dbh):int {
+    return count(Like::find($dbh, "picture_id", $this->id));
   }
 
   public function get_name():string {

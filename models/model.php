@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 function sql_build_query($params): string {
     if (array_key_exists("id", $params)) {
