@@ -3,25 +3,21 @@
 require_once __DIR__."/model.php";
 
 class User extends Model
-{
+{   
+    public function get_pwd():string { return $this->password; }
+
+    public function get_email():string { return $this->email; }
+
+    public function get_confirmed() { return $this->confirmed; }
+
+    public function get_username() { return $this->username; }
+
     public function set_pwd(string $password) {
         $this->password = self::hash_pwd($password);
     }
-
-    private function get_pwd():string {
-        return $this->password;
-    }
-
+    
     public function set_confirmed(bool $value) {
         $this->confirmed = $value;
-    }
-
-    public function get_confirmed() {
-        return $this->confirmed;
-    }
-
-    public function get_username() {
-        return $this->username;
     }
 
     public static function login(PDO $dbh, string $username, string $password):bool {

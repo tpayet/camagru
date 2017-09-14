@@ -47,5 +47,16 @@ class UserController extends Controller
             header("Location: /");
         }
     }
+
+    public static function set_pwd(PDO $dbh, array $params){
+        if (array_key_exists("hash", $params) && array_key_exists("new_pwd", $params)) {
+            print_r($params);
+            $user = User::find($dbh, "password", $params["hash"]);
+            $user->set_pwd($params["new_pwd"]);
+            $user->save($dbh);
+            $_SESSION["message"] = "your password has been changed, you can now login";
+        }
+        header("Location: /");
+    }
 }
 ?>

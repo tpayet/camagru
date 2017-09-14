@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-abstract class Mail 
+abstract class Mail
 {
     protected $headers = "From: camagru@camagru.com \r\nReply-To: camagru@camagru.com \r\n";
 
