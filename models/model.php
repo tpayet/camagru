@@ -8,7 +8,7 @@ function sql_build_query($params): string {
 
     $fields = array();
     foreach ($params as $key => $value) {
-        $fields[] = "$key='$value'";
+        $fields[] = "$key=$value";
     }
     return join(", ", $fields);
 }
@@ -36,33 +36,35 @@ abstract class Model
         }
     }
 
-    public function get_id() {
-        return $this->id;
-    }
+    public function get_id() { return $this->id; }
 
     public function save(PDO $dbh) {
         $object_vars = array_filter(get_object_vars($this));
         $table_name = self::get_tablename();
 
         $array_keys = implode(", ", array_keys($object_vars));
-        $array_values = implode(", ", array_map(function(string $str) { return "'$str'"; }, array_values($object_vars)));
+        $array_symbols = array_map(function($str){return ":". $str;}, array_keys($object_vars));
 
         if (array_key_exists("id", $object_vars)) {
-            $sql_query = "UPDATE $table_name SET " . sql_build_query($object_vars) . " WHERE $table_name.id = $this->id;";
+            $array_keys_symbols = array_combine(array_keys($object_vars), $array_symbols);
+            $sql_query = "UPDATE $table_name SET " . sql_build_query($array_keys_symbols) . " WHERE $table_name.id = $this->id;";
+            unset($object_vars["id"]);
         } else {
-            $sql_query = "INSERT INTO $table_name($array_keys) VALUES($array_values);";
+            $sql_query = "INSERT INTO $table_name($array_keys) VALUES(" . implode(", ", $array_symbols) . ");";
         }
 
         $dbh->beginTransaction();
-        $dbh->exec($sql_query);
+        print($sql_query);
+        $stmt = $dbh->prepare($sql_query);
+        $stmt->execute($object_vars);
         $dbh->commit();
     }
 
     public function delete(PDO $dbh) {
         $table_name = self::get_tablename();
-        $sql_query = "DELETE FROM '$table_name' WHERE '$table_name'.'id' = '$this->id';";
         $dbh->beginTransaction();
-        $dbh->exec($sql_query);
+        $stmt = $dbh->prepare("DELETE FROM '$table_name' WHERE '$table_name'.'id' = :id;");
+        $stmt->execute(array("id" => $this->id));
         $dbh->commit();
     }
 
